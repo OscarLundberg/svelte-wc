@@ -27,6 +27,9 @@ export default defineConfig({
   {
     name: "post",
     async closeBundle() {
+      try {
+        execSync("npm run build-storybook", {cwd: process.cwd()});
+      }catch(err){}
       await customElementLib();
       execSync("npm run build-dts", {cwd: process.cwd()});
       await fs.writeFile("dist/react.js", react);
@@ -37,12 +40,13 @@ export default defineConfig({
     rollupOptions: {
       input,
       output: {
-        format: "umd",
+        format: "es",
         entryFileNames({ name }) {
           console.log({ name });
           react += wrap(name, name, "./");
-          return `components/${name}.js`;
-        }
+          return `components/${name}/${name}.js`;
+        },
+        inlineDynamicImports: false
       },
       plugins: [
         typescript({

@@ -7,7 +7,9 @@ const config: StorybookConfig = {
     "@storybook/addon-essentials",
     "@storybook/addon-svelte-csf"
   ],
-
+  features: {
+    storyStoreV7: false
+  },
   framework: {
     name: "@storybook/svelte-vite",
     options: {

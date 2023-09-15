@@ -1,10 +1,9 @@
 import type { Preview } from "@storybook/svelte";
 import custom from "./custom-theme";
-import { collapseTextChangeRangesAcrossMultipleVersions } from "typescript";
 import {svelte, react, vue, html} from "../src/internal/example-code-gen";
 
 const preview: Preview = {
-  parameters: {
+  parameters: { 
     docs: {
       theme: custom,
       transformSource(src, storyContext){

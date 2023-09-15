@@ -1,38 +1,10 @@
 <script lang="ts">
   import "../../variables.scss";
-
-  /**
-   * Is this the principal call to action on the page?
-   */
-  export let primary = false;
-
-  /**
-   * What background color to use
-   */
-  export let backgroundColor: string = "";
-  /**
-   * How large should the button be?
-   */
-  export let size: 'small' | 'medium' | 'large' = 'medium';
-  /**
-   * Button contents
-   */
-  export let label: string = '';
-
-  $: mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
-  $: style = backgroundColor ? `background-color: ${backgroundColor}` : '';
 </script>
 
-<svelte:options tag="lst-button" />
+<svelte:options tag="lst-label" />
 
-<button
-  type="button"
-  class={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
-  {style}
-  on:click
->
-  {label}
-</button>
+<span><slot/></span>
 
 
 <style lang="scss">
